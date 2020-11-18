@@ -1,0 +1,43 @@
+//https://practice.geeksforgeeks.org/problems/first-and-last-occurrences-of-x/0
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int testCases;
+    cin >> testCases;
+    
+    while(testCases--){
+        bool found = false;
+        int count;
+        int target;
+        int fo = -1;
+        int lo = -1;
+        
+        cin >> count;
+        cin >> target;
+        
+        for(int i=0; i<count; i++){
+            int x;
+            cin >> x;
+            
+            if(x == target){
+                found = true;
+                if(fo == -1){
+                    fo = i;
+                    lo = i;
+                }else{
+                    lo = i;
+                }
+            }
+        }
+        
+        if(found){
+            cout << fo << " " << lo <<endl;
+        }
+        else{
+            cout << -1 << endl;
+        }
+    }
+    return 0;
+}
