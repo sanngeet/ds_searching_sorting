@@ -1,0 +1,26 @@
+//fixed point in a distinct sorted array (binary search)
+
+#include <iostream>
+
+int main() {
+    int list[] = {-10, -5, 3, 4, 7, 9};
+    int arrSize = sizeof(list)/sizeof(list[0]);
+    int low = 0;
+    int high = arrSize - 1;
+    int r = -1;
+    while (low <= high){
+        int mid = (low+high)/2;
+        if(mid == list[mid]){
+            r = mid;
+            break;
+        }else if (mid < list[mid]){
+            high = mid - 1;
+        }else{
+            /*mid > list[mid]*/
+            low = mid + 1;
+        }
+    }
+    std::cout << r << std::endl;
+    return 0;
+}
+

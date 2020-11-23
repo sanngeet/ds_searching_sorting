@@ -1,0 +1,10 @@
+//https://practice.geeksforgeeks.org/problems/value-equal-to-index-value1330/1
+
+	vector<int> ans = {};
+	for(int i = 1; i <= n; i++){
+		if(i == arr[i-1]){
+		ans.push_back(i);
+		}
+	}
+	    
+	return ans;
