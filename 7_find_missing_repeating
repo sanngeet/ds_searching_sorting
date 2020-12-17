@@ -1,0 +1,31 @@
+//https://practice.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
+
+class Solution{
+public:
+    int *findTwoElement(int *arr, int n) {
+        int repeating = 0;
+        int missing = 0;
+        
+        bool status[n+1] = {false};
+        
+        for(int i=0; i<n; i++){
+            if(status[arr[i]] == true){
+                repeating = arr[i];
+            }
+            status[arr[i]] = true;
+        }
+        
+        for(int i=1; i<=n; i++){
+            if(status[i] == false){
+                missing = i;
+                break;
+            }
+        }
+        
+        int *res = new int(2);
+        res[0] = repeating;
+        res[1] = missing;
+        
+        return res;
+    }
+};
