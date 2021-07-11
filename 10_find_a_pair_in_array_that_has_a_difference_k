@@ -1,0 +1,64 @@
+// Find a pair with given difference
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+// Time complexity - O(n log n)
+bool search(int a[], int s, int d){
+
+	int target, start, end;
+
+	// For loop is used to iterate the loop linearly to set the target value
+	for(int i=0; i<s; i++){
+		target = a[i] + d;
+		start = 0;
+		end = s - 1;
+
+		// Binary search the target in the array
+		while(start <= end){
+			int mid = start + (end - start)/2;
+			int value = a[mid];
+
+			if(value == target){
+				return true;
+			}else if(value > target){
+				// search in left half
+				end = mid - 1;
+			}else{
+				// search in right half
+				start = mid + 1;
+			}
+		}
+	}
+
+	return false;
+}
+
+int main() {
+
+	int s, d;
+	string str;
+
+	cout << "Enter the size of the array: ";
+	cin >> s;
+
+	int a[s] = {};
+
+	cout << "Enter the elements of the array: ";
+	for(int i=0; i<s; i++){
+		cin >> a[i];
+	}
+
+	cout << "Enter the difference between the pair: ";
+	cin >> d;
+
+	// Time complexity - O(n log n)
+	sort(a, a + s);
+
+	str = (search(a, s, d) == true) ? "at-least one" : "no";
+
+	cout << "There is " << str << " pair in the array that has a difference of " << d << endl;
+
+	return 0;
+}
+
